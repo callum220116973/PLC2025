@@ -2,17 +2,17 @@
 applicatorFunc :: [Int] -> Char -> Float
 applicatorFunc inpFunc s = 
     if s == 's' 
-    then fromIntegral (sum inpFunc)  -- sum as Float
-    else fromIntegral (sum inpFunc) / 5  -- division by 5 as Float (hardcoded)
+    then fromIntegral (sum inpFunc)  
+    else fromIntegral (sum inpFunc) / 5  
 
 main :: IO ()
 main = do
     putStrLn "Enter the start number of the range:"
     a <- readLn :: IO Int
     putStrLn "Enter the end number of the range:"
-    b <- readLn :: IO Int  -- b is still taken from the input, but not used in the division
+    b <- readLn :: IO Int  
 
-    let inpFunc = [a..b]  -- Generate the range list from a to b
+    let inpFunc = [a..b] 
 
     -- Call applicatorFunc with inpFunc, 'a' (or 's'), and hardcoded 5
     let result = applicatorFunc inpFunc 'a'  -- 'a' means divide, 's' means sum
