@@ -1,19 +1,22 @@
--- Define applicatorFunc with 2 arguments: inpFunc and s
-applicatorFunc :: [Int] -> Char -> Float
-applicatorFunc inpFunc s = 
-    if s == 's' 
-    then fromIntegral (sum inpFunc)  
-    else fromIntegral (sum inpFunc) / 5  
+applicatorFunc :: [Int] -> Char -> Double
+applicatorFunc inpFunc s
+  | s == 's'  = fromIntegral (sum inpFunc)  -- Sum of numbers in inpFunc
+  | s == 'a'  = fromIntegral (sum inpFunc) / fromIntegral (length inpFunc)  -- Average of numbers in inpFunc
+  | otherwise = error "Invalid operation"  -- Error for invalid operation
 
 main :: IO ()
 main = do
-    putStrLn "Enter the start number of the range:"
-    a <- readLn :: IO Int
-    putStrLn "Enter the end number of the range:"
-    b <- readLn :: IO Int  
+  -- Prompt the user for the start and end numbers of the range
+  putStrLn "Please enter the start number of your range"
+  a <- readLn :: IO Int
+  putStrLn "Please enter the end number of your range"
+  b <- readLn :: IO Int
 
-    let inpFunc = [a..b] 
+  -- Create the list [a..b]
+  let inpFunc = [a..b]
 
-    -- Call applicatorFunc with inpFunc, 'a' (or 's'), and hardcoded 5
-    let result = applicatorFunc inpFunc 'a'  -- 'a' means divide, 's' means sum
-    putStrLn ("Result: " ++ show result)  -- Display the result as a Float
+  -- Call the applicatorFunc with 'a' for average
+  let result = applicatorFunc inpFunc 'a'  -- You can change 'a' to 's' for sum
+
+  -- Output the result
+  putStrLn ("Result: " ++ show(result))
