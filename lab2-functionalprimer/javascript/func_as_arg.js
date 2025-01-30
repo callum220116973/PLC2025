@@ -1,7 +1,14 @@
-//Create list of ints from 1 to 5, Haskell equivalent [1..5]
+
+// Get user input synchronously
+const a = 10;
+const b = 20;
+
 function arrFunc(){
     let arr = [];
-    for (let i = 1; i<=5; i++) {
+    /*setting 'i' to equal to 'a' because that is the starting point of our range
+    then we check if 'i' is the same size of 'b' because that means we have reached
+    our max element in the range */
+    for (let i = a; i<=b; i++) {
         arr.push(i);
     }
     return arr;    
@@ -16,7 +23,7 @@ function applicatorFunc(inpFunc, s){
     else{        
         const arr = inpFunc();
         let sum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0);
-        return sum/5;
+        return sum/arr.length;
     }
 }
 
