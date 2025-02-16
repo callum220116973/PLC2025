@@ -86,7 +86,13 @@ public class Overflow
         for ( int j = 1; j <= m; j++ )
         {
             ns = ns * n;
-//             assert ?? : "Floating-point overflow";
+            assert ns != ns * 2 : "Floating-point overflow";
+            /* this assert statement is being used to check overflow 
+            and the reasson why it works is because we say as long as ns is
+            not equal to ns * 2 then no overflow has occured maybe people will
+            ask infiity is not equal ns * 2 is not equal to ns, this is because
+            ns becomes infinity and ns * 2 also becomes infinity triggering the assert 
+            statement.*/
             resultList.add(ns);
         }
         return resultList;
@@ -102,7 +108,7 @@ public class Overflow
     private static List<Float> geom_fp(float n, int m)
     {
         assert m >= 0 : ("illegal power " + m);
-
+    
         List<Float> resultList = new LinkedList<Float>();
 
         float ns_inv = 1;
@@ -112,7 +118,8 @@ public class Overflow
         for ( int j = 0; j <= m; j++ )
         {
             ns_inv = ns_inv / n; // update from 1/n^(i-1) to 1/n^i
-//             assert ?? : "Floating point underflow";
+             assert ns_inv != 0 : "Floating point underflow";
+             // detects underflow because once the number become 
             geom_sum = ns_inv + geom_sum;
             resultList.add(geom_sum);
         }
