@@ -3,9 +3,9 @@ import java.util.EnumSet;
 
 public class ErrorsEnum
 {
-    enum Error { FP_ROUNDING, FP_OVERFLOW, FP_UNDERFLOW, INT_OVERFLOW }
+    enum Result { FP_ROUNDING, FP_OVERFLOW, FP_UNDERFLOW, INT_OVERFLOW }
 
-    enum Result { A_BIT_DIFFERENT, INFINITY, ZERO, VERY_DIFFERENT }
+    enum Error { A_BIT_DIFFERENT, INFINITY, ZERO, VERY_DIFFERENT }
     
     private static <E extends Enum<E>> E getEnumElement(String elementTypeName, Class<E> elementType)
     {
@@ -59,11 +59,18 @@ public class ErrorsEnum
         System.out.print("Known errors = ");
         for (Error e : EnumSet.allOf(Error.class)) 
         {
+            /*Once a Enum is concatenated with a String the .toString() method is automatically called 
+             * converting the errors into a String.
+            */
             System.out.print(e + " ");
         }
         System.out.println();
         
         Error e = getEnumElement("error", Error.class);
+        /*
+         * Same as before once Enum is contcatenated with a String the .toString() method is automatically
+         * called which converts Enum values into strings.
+         */
         System.out.println(e + " results in: " + error2Result(e));
     }
 }

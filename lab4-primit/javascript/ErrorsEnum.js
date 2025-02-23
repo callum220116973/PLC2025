@@ -33,7 +33,14 @@ function error2Result(err){
 }
 
 }
-
+/*
+as you can see here line 39 is where a symbol is converted to a string this is because
+Object.values(Error_enumobj) retrives the array of values from Error_enumobj, because these
+values are already strings no explicit conversion is needed console.log automatically formats the
+array into a readable string, the main reasson javascript doesnt has to convert anything really is 
+because javascript uses plain obkects with string values which means no conversion is needed unlike java
+enums are not strings they are special objects.
+ */
 console.log('Error list: ', Object.values(Error_enumobj));
 var validArg = false;
 while(!validArg){

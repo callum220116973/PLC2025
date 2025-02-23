@@ -5,6 +5,11 @@ import System.IO (hSetBuffering, stdout, BufferMode(..))
 main =
     do
     initialiseIO
+    -- Lines 9 and 11 are where conversions happens turning Enumerated values into strings
+    -- error is an Error enum value error2Result error returns a result enum value, show error
+    -- converts error to a string for example FP_Overflow, show error2Result error converts the result to a string
+    -- reults in is a string  and  ++ concatenates everything, show is requried because both Error and Result are not
+    -- not strings by default, haskell enums are not strings, they are custom data types, so show is required for conversion.
     putStrLn ("known errors = " ++ show allErrors)
     error <- getElement "error"
     putStrLn (show error ++ " results in: " ++ show (error2Result error))
